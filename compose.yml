@@ -114,6 +114,8 @@ services:
     labels:
       traefik.http.routers.client.rule: Host(`localhost`)
       traefik.http.services.client.loadbalancer.server.port: 5173
+    environment:
+      - CHOKIDAR_USEPOLLING=true
 
 
   ###################################################
@@ -137,7 +139,7 @@ services:
     volumes:
       - todo-mysql-data:/var/lib/mysql
     ports:
-      - "3306:3306"c
+      - "3306:3306"
     environment: 
       MYSQL_ROOT_PASSWORD: secret
       MYSQL_DATABASE: todos
